@@ -1,23 +1,194 @@
-/* AdminOrders.css */
-.ord-page{padding:2rem;background:#f8f9ff;min-height:100vh}
-.ord-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
-.ord-header h1{display:flex;align-items:center;gap:12px;color:#2d1b4e;font-size:2.4rem}
-.ord-search{position:relative;flex:1;max-width:400px}
-.ord-search input{width:100%;padding:14px 50px 14px 45px;border-radius:20px;border:2px solid #ddd}
-.ord-search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#999}
-.ord-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.8rem}
-.ord-card{background:white;border-radius:24px;padding:1.8rem;box-shadow:0 15px 40px rgba(0,0,0,0.1);transition:0.3s}
-.ord-card:hover{transform:translateY(-8px)}
-.ord-top{display:flex;justify-content:space-between;font-size:0.9rem;color:#666}
-.ord-id{font-weight:700;color:#6c5ce7}
-.ord-user{font-weight:600;margin:1rem 0}
-.ord-total{font-size:1.6rem;font-weight:800;color:#6c5ce7}
-.ord-items{font-size:0.9rem;color:#555;line-height:1.6}
-.ord-status{padding:8px 16px;border-radius:50px;font-weight:700;margin:1rem 0}
-.ord-actions{display:flex;gap:10px;flex-wrap:wrap}
-.ord-actions button{padding:10px 16px;border:none;border-radius:12px;color:white;cursor:pointer;font-weight:600}
-.ord-actions button:nth-child(1){background:#2196f3}
-.ord-actions button:nth-child(2){background:#4caf50}
-.ord-actions button:nth-child(3){background:#f44336}
-.ord-actions button:disabled{opacity:0.5;cursor:not-allowed}
-.skeleton .ord-skel{height:200px;background:#eee;border-radius:12px;animation:pulse 1.5s infinite}
+/* PAGE */
+.pedidos-page {
+  padding: 20px;
+  background: #f8f9ff;
+  min-height: 100vh;
+}
+
+/* HEADER */
+.pedidos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.pedidos-header h1 {
+  display: flex;
+  align-items: center;
+  color: #2d1b4e;
+  gap: 10px;
+}
+
+/* SEARCH */
+.pedidos-search {
+  position: relative;
+  width: 300px;
+}
+
+.pedidos-search input {
+  padding: 12px 15px 12px 40px;
+  width: 100%;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+}
+
+.pedidos-search svg {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #777;
+}
+
+/* STATS */
+.pedidos-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  padding: 14px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  font-size: 1rem;
+}
+
+/* TABLE */
+.orders-table {
+  display: block;
+  overflow-x: auto;
+  margin-bottom: 40px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+th, td {
+  padding: 12px 10px;
+  text-align: left;
+}
+
+th {
+  background: #ececff;
+  font-weight: 700;
+  color: #2d1b4e;
+  border-bottom: 2px solid #ddd;
+}
+
+tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.product-pill {
+  display: inline-block;
+  background: #e3e0ff;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  margin: 2px;
+}
+
+/* STATUS */
+.status-badge {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+/* ACTIONS */
+.actions-col button {
+  margin-right: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  background: #ddd;
+}
+
+.actions-col .cancel {
+  background: #f44336;
+  color: white;
+}
+
+.actions-col button:hover {
+  opacity: 0.8;
+}
+
+/* LOAD MORE */
+.load-more {
+  padding: 14px;
+  width: 100%;
+  background: #6c5ce7;
+  color: white;
+  border-radius: 14px;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* MOBILE CARDS */
+.orders-cards {
+  display: none;
+}
+
+.order-card {
+  padding: 18px;
+  background: white;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+}
+
+.order-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.order-client {
+  font-size: 1.1rem;
+}
+
+.order-items {
+  margin: 15px 0;
+  color: #555;
+  line-height: 1.5;
+}
+
+.card-actions button {
+  padding: 10px 14px;
+  margin-right: 8px;
+  border-radius: 10px;
+  border: none;
+  background: #6c5ce7;
+  color: white;
+  font-size: 0.85rem;
+}
+
+.card-actions .cancel {
+  background: #f44336;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .orders-table {
+    display: none;
+  }
+  .orders-cards {
+    display: block;
+  }
+}

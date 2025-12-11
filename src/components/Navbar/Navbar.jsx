@@ -81,7 +81,7 @@ function Navbar() {
             {role === "admin" && (
               <li>
                 <Link to="/admin" className="nav-link admin">
-                  <Shield size={18} /> Panel Admin
+                  <Shield size={18} /> Administracion
                 </Link>
               </li>
             )}
@@ -123,7 +123,7 @@ function Navbar() {
 
           {role === "admin" && (
             <Link to="/admin" onClick={() => setMenuOpen(false)} className="admin-link-mobile">
-              <Shield size={22} /> Panel de Administración
+              <Shield size={22} />Administración
             </Link>
           )}
         </div>

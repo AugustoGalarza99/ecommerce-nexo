@@ -65,26 +65,28 @@ export const createPreference = async (req, res) => {
 // =============================
 export const webhook = async (req, res) => {
     try {
-        // Convertir buffer a JSON
+        // Convertimos el RAW BODY a JSON
         const raw = req.body.toString();
         console.log("📩 Webhook recibido RAW:", raw);
 
         const notification = JSON.parse(raw);
         console.log("🔔 Webhook parseado:", notification);
 
-        // Ignorar si no es pago
+        // Si NO es evento de pago → ignorar
         if (notification.type !== "payment") {
+            console.log("⏭ Evento ignorado:", notification.type);
             return res.sendStatus(200);
         }
 
         const paymentId = notification.data.id;
 
-        // Obtener datos desde MercadoPago
+        // --- Obtener pago desde MercadoPago ---
         const response = await fetch(
             `https://api.mercadopago.com/v1/payments/${paymentId}`,
             {
                 headers: {
                     Authorization: `Bearer ${client.accessToken}`,
+                    "Content-Type": "application/json"
                 },
             }
         );
@@ -92,24 +94,63 @@ export const webhook = async (req, res) => {
         const data = await response.json();
         console.log("🧾 Datos del pago:", data);
 
-        // ❗ Ignorar pagos inexistentes (prueba con ID falso)
+        // Si Mercado Pago dice que el pago no existe → ignoramos
         if (data.error === "not_found") {
-            console.log("⚠ Pago inexistente. Webhook de prueba ignorado.");
+            console.log("⚠ Pago inexistente, ignorando webhook.");
             return res.sendStatus(200);
         }
 
-        // Guardar en Firestore SOLO si existen los campos
-        await db.collection("orders").doc(String(paymentId)).set({
-            id: paymentId,
-            status: data.status ?? null,
-            status_detail: data.status_detail ?? null,
-            amount: data.transaction_amount ?? null,
-            email: data.payer?.email ?? null,
-            items: data.additional_info?.items ?? [],
-            date: new Date(),
-        });
+        // ==========================================
+        // 🔥 MAPEO PROFESIONAL DE LA ORDEN
+        // ==========================================
 
-        console.log("📦 Orden guardada en Firestore");
+        const orderDoc = {
+            id: String(paymentId),
+
+            // 📌 Estado estándar para el administrador
+            status:
+                data.status === "approved"
+                    ? "pagado"
+                    : data.status === "pending"
+                    ? "pendiente_pago"
+                    : data.status === "in_process"
+                    ? "en_revision"
+                    : data.status === "rejected"
+                    ? "cancelado"
+                    : data.status || "pendiente_pago",
+
+            status_detail: data.status_detail || "",
+
+            // 📦 Monto total
+            amount: data.transaction_amount || 0,
+
+            // 👤 Datos del comprador
+            email: data.payer?.email || "",
+            payer_name: `${data.payer?.first_name || ""} ${data.payer?.last_name || ""}`.trim(),
+            phone: data.payer?.phone?.number || "",
+
+            // 💳 Método de pago
+            payment_method: data.payment_method?.type || "",
+            payment_type: data.payment_type_id || "",
+
+            // 🛒 Items detallados
+            items: (data.additional_info?.items || []).map(i => ({
+                title: i.title,
+                quantity: Number(i.quantity),
+                unit_price: Number(i.unit_price),
+            })),
+
+            // 🕒 Fecha del pago real
+            date: new Date(data.date_approved || Date.now()),
+            lastUpdate: new Date(),
+        };
+
+        // ==========================================
+        // 🔥 GUARDAR / ACTUALIZAR EN FIRESTORE
+        // ==========================================
+        await db.collection("orders").doc(String(paymentId)).set(orderDoc, { merge: true });
+
+        console.log("📦 Orden guardada correctamente en Firestore.");
 
         return res.sendStatus(200);
 
