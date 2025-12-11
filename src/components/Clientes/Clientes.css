@@ -1,0 +1,8 @@
+/* AdminCustomers.css */
+.cus-page{padding:2rem;background:#f8f9ff;min-height:100vh}
+.cus-page h1{display:flex;align-items:center;gap:12px;color:#2d1b4e;margin-bottom:2rem}
+.cus-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:2rem}
+.cus-card{background:white;border-radius:24px;padding:2rem;text-align:center;box-shadow:0 15px 40px rgba(0,0,0,0.1);transition:0.3s}
+.cus-card:hover{transform:translateY(-10px)}
+.cus-avatar{width:80px;height:80px;border-radius:50%;background:#6c5ce7;color:white;font-size:2rem;display:grid;place-items:center;margin:0 auto 1rem;font-weight:700}
+.cus-stats{display:flex;justify-content:space-around;margin-top:1.5rem;font-weight:600;color:#444}

@@ -1,0 +1,23 @@
+/* AdminOrders.css */
+.ord-page{padding:2rem;background:#f8f9ff;min-height:100vh}
+.ord-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
+.ord-header h1{display:flex;align-items:center;gap:12px;color:#2d1b4e;font-size:2.4rem}
+.ord-search{position:relative;flex:1;max-width:400px}
+.ord-search input{width:100%;padding:14px 50px 14px 45px;border-radius:20px;border:2px solid #ddd}
+.ord-search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#999}
+.ord-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.8rem}
+.ord-card{background:white;border-radius:24px;padding:1.8rem;box-shadow:0 15px 40px rgba(0,0,0,0.1);transition:0.3s}
+.ord-card:hover{transform:translateY(-8px)}
+.ord-top{display:flex;justify-content:space-between;font-size:0.9rem;color:#666}
+.ord-id{font-weight:700;color:#6c5ce7}
+.ord-user{font-weight:600;margin:1rem 0}
+.ord-total{font-size:1.6rem;font-weight:800;color:#6c5ce7}
+.ord-items{font-size:0.9rem;color:#555;line-height:1.6}
+.ord-status{padding:8px 16px;border-radius:50px;font-weight:700;margin:1rem 0}
+.ord-actions{display:flex;gap:10px;flex-wrap:wrap}
+.ord-actions button{padding:10px 16px;border:none;border-radius:12px;color:white;cursor:pointer;font-weight:600}
+.ord-actions button:nth-child(1){background:#2196f3}
+.ord-actions button:nth-child(2){background:#4caf50}
+.ord-actions button:nth-child(3){background:#f44336}
+.ord-actions button:disabled{opacity:0.5;cursor:not-allowed}
+.skeleton .ord-skel{height:200px;background:#eee;border-radius:12px;animation:pulse 1.5s infinite}

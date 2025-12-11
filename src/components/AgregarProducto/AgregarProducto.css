@@ -1,0 +1,286 @@
+/* ProductForm.css */
+.ap-form-overlay {
+  inset: 0;
+  background: rgba(240, 239, 255, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.ap-form-container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  font-family: 'Quicksand', sans-serif;
+}
+
+.ap-form-header {
+  padding: 1.8rem 2rem;
+  border-bottom: 1px solid rgba(108, 92, 231, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(to right, #6c5ce7, #a29bfe);
+  color: white;
+  border-radius: 24px 24px 0 0;
+}
+
+.ap-form-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ap-close-btn {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.ap-close-btn:hover {
+  background: rgba(255,255,255,0.4);
+  transform: rotate(90deg);
+}
+
+.ap-product-form {
+  padding: 2rem;
+}
+
+.ap-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.ap-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.ap-form-group label {
+  font-weight: 600;
+  color: #2d1b4e;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.ap-form-group input,
+.ap-form-group select,
+.ap-form-group textarea {
+  padding: 14px 16px;
+  border: 2px solid rgba(108, 92, 231, 0.2);
+  border-radius: 14px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.ap-form-group input:focus,
+.ap-form-group select:focus,
+.ap-form-group textarea:focus {
+  outline: none;
+  border-color: #6c5ce7;
+  box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.15);
+}
+
+.ap-price-input-wrapper,
+.ap-discount-input-wrapper {
+  position: relative;
+}
+
+.ap-currency {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  font-weight: 600;
+}
+
+.ap-price-input-wrapper input {
+  padding-left: 40px;
+}
+
+.ap-discount-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+}
+
+.ap-checkbox-group {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.ap-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.ap-star-icon {
+  color: #ddd;
+  transition: all 0.3s;
+}
+
+.ap-star-icon.filled {
+  color: #f39c12;
+  fill: #f39c12;
+}
+
+.ap-full-width {
+  grid-column: 1 / -1;
+}
+
+.ap-image-upload-area {
+  border: 3px dashed rgba(108, 92, 231, 0.3);
+  border-radius: 18px;
+  padding: 2rem;
+  text-align: center;
+  background: rgba(240, 239, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.ap-image-upload-area:hover {
+  border-color: #6c5ce7;
+  background: rgba(240, 239, 255, 0.7);
+}
+
+.ap-upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: #6c5ce7;
+  font-weight: 600;
+}
+
+.ap-upload-label span {
+  font-size: 1.1rem;
+}
+
+.ap-upload-label small {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.ap-hidden-input {
+  display: none;
+}
+
+.ap-image-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.ap-image-preview-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.ap-image-preview-item img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.ap-remove-image-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(231, 76, 60, 0.9);
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ap-remove-image-btn:hover {
+  background: #e74c3c;
+  transform: scale(1.1);
+}
+
+.ap-form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(108, 92, 231, 0.2);
+}
+
+.ap-btn-cancel, .ap-btn-submit {
+  padding: 14px 32px;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+}
+
+.ap-btn-cancel {
+  background: rgba(0,0,0,0.1);
+  color: #666;
+}
+
+.ap-btn-cancel:hover {
+  background: rgba(0,0,0,0.2);
+}
+
+.ap-btn-submit {
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  color: white;
+}
+
+.ap-btn-submit:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(108, 92, 231, 0.4);
+}
+
+.ap-btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+

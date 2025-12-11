@@ -1,0 +1,9 @@
+/* AdminPromotions.css */
+.pro-page{padding:2rem;background:#f8f9ff;min-height:100vh}
+.pro-page h1{display:flex;align-items:center;gap:12px;margin-bottom:2rem;color:#2d1b4e}
+.pro-form{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:3rem}
+.pro-form input,.pro-form select{padding:14px;border-radius:16px;border:2px solid #ddd;flex:1;min-width:200px}
+.pro-form button{padding:14px 24px;background:#6c5ce7;color:white;border:none;border-radius:16px;cursor:pointer;font-weight:700}
+.pro-list{display:grid;gap:1rem}
+.pro-coupon{background:white;padding:1.5rem;border-radius:20px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,0.1)}
+.pro-coupon button{background:#f44336;color:white;padding:10px;border-radius:12px;border:none;cursor:pointer}

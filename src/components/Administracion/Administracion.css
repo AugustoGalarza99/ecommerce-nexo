@@ -1,0 +1,158 @@
+/* AdminDashboard.css - Versión refinada y profesional */
+.dashboard-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
+  padding: 3rem 1.5rem;
+  font-family: 'Quicksand', sans-serif;
+  color: #333;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.dashboard-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #2d1b4e;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.8rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.card-link {
+  text-decoration: none;
+  display: block;
+  animation: fadeInUp 0.7s ease forwards;
+  animation-delay: var(--delay, 0s);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.admin-card {
+  position: relative;
+  height: 180px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.admin-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--card-color) 0%, var(--card-color) 100%);
+  opacity: 0.12;
+  transition: all 0.6s ease;
+}
+
+.admin-card:hover .card-bg {
+  opacity: 0.22;
+  transform: scale(1.1);
+}
+
+.card-content {
+  position: relative;
+  height: 100%;
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  transition: all 0.4s ease;
+}
+
+.card-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--card-color);
+  transition: all 0.3s ease;
+}
+
+.admin-card:hover .card-icon {
+  transform: scale(1.15) rotate(8deg);
+}
+
+.card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #2d1b4e;
+  margin: 0.5rem 0;
+}
+
+.card-desc {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.card-arrow {
+  color: var(--card-color);
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.4s ease;
+}
+
+.admin-card:hover .card-arrow {
+  opacity: 1;
+  transform: translateX(6px);
+}
+
+.dashboard-footer {
+  text-align: center;
+  margin-top: 5rem;
+  padding: 2rem;
+  color: #888;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-title {
+    font-size: 2.3rem;
+  }
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .admin-card {
+    height: 160px;
+  }
+  .card-content {
+    padding: 1.5rem;
+  }
+}

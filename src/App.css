@@ -1,0 +1,35 @@
+/* Reset básico para eliminar márgenes y paddings predeterminados */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Establece el fondo general y el color del texto */
+body {
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Contenedor principal */
+.container {
+  width: 90%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Imágenes responsivas */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
